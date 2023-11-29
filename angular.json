@@ -8,7 +8,30 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "skipTests": true
+          "skipTests": true,
+          "path": "src/app/components"
+        },
+        "@schematics/angular:service": {
+          "skipTests": true,
+          "path": "src/app/services"
+        },
+        "@schematics/angular:interface": {
+          "path": "src/app/models"
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true,
+          "path": "src/app/guards"
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true,
+          "path": "src/app/pipes"
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true,
+          "path": "src/app/directives"
+        },
+        "@schematics/angular:module": {
+          "path": "src/app/modules"
         }
       },
       "root": "",
