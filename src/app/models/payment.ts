@@ -4,9 +4,12 @@ export interface IPayment {
     id?: number,
     userId: number,
     paymentMethod: EPayment,
-    multiple?: number,
+    multiple?: boolean,
     amount: number,
     currency: string,
-    status: boolean,
+    status: EPaymentStatus,
     createdAt: string
+}
+
+export enum EPaymentStatus {
 }
