@@ -1,30 +1,22 @@
-name: SonarCloud Analysis
-
 on:
+  # Trigger analysis when pushing in master or pull requests, and when creating
+  # a pull request.
   push:
     branches:
-      - dev
+      - master
+  pull_request:
+      types: [opened, synchronize, reopened]
+name: Main Workflow
 jobs:
   sonarcloud:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '11'
-
-      - name: Build and Analyze
-        run: |
-          ./gradlew build
-          ./gradlew sonarqube \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.organization=your-organization-key \
-            -Dsonar.projectKey=your-project-key \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - uses: actions/checkout@v3
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
