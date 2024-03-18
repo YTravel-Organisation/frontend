@@ -11,6 +11,6 @@
     "moduleResolution": "node",
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*.tsx", "src/**/*.ts"],
+  "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.jsx", "src/**/*.js"],
   "exclude": ["node_modules", "dist", "lib"]
 }
