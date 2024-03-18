@@ -5,12 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import NotFound from './pages/errors/NotFound';
+import Login from './pages/auth/Login';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <NotFound />
+    errorElement: <NotFound />,
+  },
+  {
+    path: 'login',
+    element: <Login />
   }
 ])
 
